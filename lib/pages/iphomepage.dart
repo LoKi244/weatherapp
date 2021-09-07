@@ -1,34 +1,54 @@
 import 'dart:convert';
 
-import 'dart:async';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:weatherapp/pages/searchpage.dart';
+import 'package:weatherapp/models/weathermodel.dart';
 import 'package:http/http.dart' as http;
-import 'package:weatherapp/constant.dart';
-import 'package:weatherapp/weathermodel.dart';
-import 'package:weatherapp/weathertile.dart';
+import 'package:weatherapp/models/weathertile.dart';
 
-class HomePage extends StatefulWidget {
-  HomePage({this.city});
-  String city;
+class IpHomePage extends StatefulWidget {
+  Future<String> ipcity;
+  IpHomePage({this.ipcity});
 
   @override
-  _HomePageState createState() => _HomePageState(city: city);
+  _IpHomePageState createState() => _IpHomePageState(ipcity: ipcity);
 }
 
-class _HomePageState extends State<HomePage> {
-  String city;
-  _HomePageState({this.city});
+class _IpHomePageState extends State<IpHomePage> {
+  Future<String> ipcity;
+  _IpHomePageState({this.ipcity});
 
   Future<WeatherModel> fetchWeather() async {
     var requestUrl = Uri.parse(
-        'https://api.openweathermap.org/data/2.5/weather?q=$city&units=metric&APPID=43ea6baaad7663dc17637e22ee6f78f2');
+        'https://api.openweathermap.org/data/2.5/weather?q=${await ipcity}&units=metric&APPID=43ea6baaad7663dc17637e22ee6f78f2');
     final response = await http.get(requestUrl);
     if (response.statusCode == 200) {
       return WeatherModel.fromJson(jsonDecode(response.body));
     } else {
-      throw Exception("Error loading request URL info");
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          duration: Duration(
+            milliseconds: 3000,
+          ),
+          backgroundColor: Colors.blue,
+          content: Text(
+            'Unable to get the weather data of your location',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontFamily: 'OpenSans',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+        ),
+      );
+      Navigator.pop(
+        context,
+        MaterialPageRoute(
+          builder: (context) {
+            return SearchPage();
+          },
+        ),
+      );
     }
   }
 

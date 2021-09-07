@@ -1,5 +1,3 @@
-import 'package:flutter/cupertino.dart';
-
 class WeatherModel {
   var temp;
   var maxtemp;

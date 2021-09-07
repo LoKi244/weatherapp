@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
-import 'dart:math' as math;
 
 import 'package:weatherapp/splashscreen.dart';
 
