@@ -19,18 +19,17 @@ class _SearchPageState extends State<SearchPage> {
   String cityname;
   String ipcity;
 
-  Future<String> getIPAddress() async {
+  /* Future<String> getIPAddress() async {
     final url = Uri.parse('https://api64.ipify.org/?format=json');
     final response = await http.get(url);
     Map ipdata = jsonDecode(response.body);
     String _ip = ipdata["ip"].toString();
 
     return _ip;
-  }
+  }*/
 
   Future<String> getIpcity() async {
-    var requestUrl =
-        Uri.parse('http://ip-api.com/json/${await getIPAddress()}');
+    var requestUrl = Uri.parse('https://freegeoip.app/json/');
     final response = await http.get(requestUrl);
     Map data = jsonDecode(response.body);
 
@@ -194,13 +193,5 @@ class _SearchPageState extends State<SearchPage> {
         ),
       ),
     );
-  }
-}
-
-class Citymodel {
-  String city;
-  Citymodel({this.city});
-  factory Citymodel.fromJson(Map<String, dynamic> json) {
-    return Citymodel(city: json['city'].toString());
   }
 }
