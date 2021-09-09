@@ -19,15 +19,6 @@ class _SearchPageState extends State<SearchPage> {
   String cityname;
   String ipcity;
 
-  /* Future<String> getIPAddress() async {
-    final url = Uri.parse('https://api64.ipify.org/?format=json');
-    final response = await http.get(url);
-    Map ipdata = jsonDecode(response.body);
-    String _ip = ipdata["ip"].toString();
-
-    return _ip;
-  }*/
-
   Future<String> getIpcity() async {
     var requestUrl = Uri.parse('https://freegeoip.app/json/');
     final response = await http.get(requestUrl);
@@ -135,7 +126,6 @@ class _SearchPageState extends State<SearchPage> {
                           ),
                         )
                       },
-                      // padding: EdgeInsets.only(right: 0.0),
                       child: Row(
                         children: [
                           SizedBox(
