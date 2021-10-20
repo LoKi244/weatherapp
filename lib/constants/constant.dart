@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 Text kAppName = Text(
   "WeatherApp",
   style: TextStyle(
-    fontFamily: 'Pacifico',
+    fontFamily: 'Architects',
     fontSize: 28,
     color: Colors.white,
   ),
@@ -12,7 +12,7 @@ Text kAppName = Text(
 Text kAppLogoName = Text(
   "WeatherApp",
   style: TextStyle(
-    fontFamily: 'Pacifico',
+    fontFamily: 'Architects',
     fontSize: 45,
     color: Colors.white,
   ),

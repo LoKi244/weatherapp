@@ -66,7 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                           "WeatherApp",
                           style: TextStyle(
                             fontSize: 50.0,
-                            fontFamily: 'Pacifico',
+                            fontFamily: 'Architects',
                           ),
                         ),
                       ),
