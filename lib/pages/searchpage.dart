@@ -20,7 +20,8 @@ class _SearchPageState extends State<SearchPage> {
   String ipcity;
 
   Future<String> getIpcity() async {
-    var requestUrl = Uri.parse('https://freegeoip.app/json/');
+    var requestUrl = Uri.parse('http://ip-api.com/json/');
+
     final response = await http.get(requestUrl);
     Map data = jsonDecode(response.body);
 
